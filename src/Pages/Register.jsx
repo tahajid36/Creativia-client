@@ -1,7 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { signup, setUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -10,21 +13,33 @@ const Register = () => {
 
   const handleRegister = (data) => {
     console.log(data);
+    signup(data.email, data.password, data.photoURL).then((result) => {
+      console.log(result.user);
+      setUser(result.user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your are registered succesfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
   };
 
   return (
     <div>
       <div className="hero min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
+        <div className="mx-auto w-7/11">
+          <div className="text-center">
             <h1 className="text-5xl text-primary font-bold">Register now!</h1>
             <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Join a global community of creators and innovators. Create your
+              account today to start competing in world-class contests,
+              sharpening your professional skills, and winning prizes that
+              matter.
             </p>
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <div className="card bg-base-100 w-full mx-auto max-w-md shrink-0 shadow-2xl">
             <div className="card-body">
               <form
                 className="fieldset"
@@ -34,7 +49,7 @@ const Register = () => {
                 <label className="label">Email</label>
                 <input
                   type="email"
-                  className="input"
+                  className="input w-full"
                   placeholder="Email"
                   {...register("email", { required: true })}
                 />
@@ -42,13 +57,25 @@ const Register = () => {
                   <p className="text-red-500">Email field cannot be emty</p>
                 )}
 
+                {/* name field here  */}
+                <label className="label">Username</label>
+                <input
+                  type="text"
+                  className="input w-full"
+                  placeholder="Enter your name here"
+                  {...register("name", { required: true })}
+                />
+                {errors.name?.type === "required" && (
+                  <p className="text-red-500">Username field cannot be emty</p>
+                )}
+
                 {/* image url field here  */}
                 <label className="label">Photo URL</label>
                 <input
                   type="text"
-                  className="input"
+                  className="input w-full"
                   placeholder="Paste photo url here"
-                  {...register("image")}
+                  {...register("image", { required: true })}
                 />
                 {errors.image?.type === "required" && (
                   <p className="text-red-500">Email field cannot be emty</p>
@@ -58,7 +85,7 @@ const Register = () => {
                 <label className="label">Password</label>
                 <input
                   type="password"
-                  className="input"
+                  className="input w-full"
                   placeholder="Password"
                   {...register("password", {
                     required: true,

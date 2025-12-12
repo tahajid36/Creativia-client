@@ -1,7 +1,10 @@
 import React from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
+import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { signout, user } = useAuth();
   const navlinks = (
     <>
       <NavLink to={"/"}>
@@ -15,13 +18,33 @@ const Navbar = () => {
       </NavLink>
     </>
   );
-  const dropdownlinks = <>
-  <Link  to={'/'}><li className="m-2">Profile</li></Link>
-  <Link to={'/dashboard'}><li className="m-2">Dashboard</li></Link>
-  </>
+  const dropdownlinks = (
+    <>
+      <Link to={"/"}>
+        <li className="m-2">Profile</li>
+      </Link>
+      <Link to={"/dashboard"}>
+        <li className="m-2">Dashboard</li>
+      </Link>
+    </>
+  );
+ const navigate = useNavigate()
+  const handleSignOut = () => {
+    signout().then((res) => {
+      console.log(res);
+      navigate('/register')
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your are logged out succesfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+  };
   return (
     <div className="inter">
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,45 +66,48 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-30 mt-3 w-52 p-2 shadow"
             >
               {/* responsive side navbar  */}
               {navlinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl text-primary font-semibold ">
-            Creativia
-          </a>
+          <a className="btn btn-ghost text-2xl font-semibold md:block hidden ">Creativia</a>
+
         </div>
-        <div className="navbar-center hidden lg:flex"></div>
+        <div className="navbar-center md:hidden">
+          {/* this web logo will be hidden in large devices only show in phones  */}
+        <a className="btn btn-ghost text-2xl font-semibold ">Creativia</a>
+
+        </div>
         <div className="navbar-end">
+          <ul className="menu menu-horizontal hidden md:block md:flex  gap-15 px-1 mx-7 ">{navlinks}</ul>
 
-          <ul className="menu menu-horizontal gap-15 px-1 mx-7 ">
-      {navlinks}
-    </ul>
-    {/* <a className="btn ">Login</a> */}
-
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+          {user ? (
+            <div className="dropdown dropdown-end ">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="user profile picture"
+                    src={user.photoURL}
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex="-1"
+                className="menu menu-sm dropdown-content bg-secondary rounded-box z-1 mt-3 w-52 p-2 shadow"
+              >
+                {dropdownlinks}
+                <li onClick={handleSignOut} className="m-2 btn">logout </li>
+              </ul>
             </div>
-            <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              {dropdownlinks}
-              <li className="m-2">logout </li>
-            </ul>
-          </div>
+          ) : (
+            <Link to={'/login'} className="btn ">Login</Link>
+          )}
         </div>
       </div>
     </div>
