@@ -8,10 +8,10 @@ const HeroSection = () => {
         <Slide></Slide>
       </div>
       <div className="md:col-span-2 space-y-4  rounded-2xl">
-        <h1 className="text-3xl text-center md:text-left md:text-7xl  font-bold inter">
-          A Creative Arena <br /> for Every Skill Level
+        <h1 className="text-3xl text-center md:text-left md:text-[70px]  font-bold inter">
+          A Creative Arena for Every Skill Level
         </h1>
-        <p className="text-md md:text-2xl text-center md:text-left">
+        <p className="text-md md:text-xl text-center md:text-left">
           Enter contests, challenge others, and earn prizes. Or craft your own
           competition. Participate in contests from top organizers—or create
           your own competitive challenge.

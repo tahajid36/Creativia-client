@@ -9,14 +9,11 @@ const CreativePortfolio = () => {
             {/* Left Section */}
             <div className="w-full lg:w-1/2 max-w-2xl">
               <div className="grid grid-cols-3 gap-4">
-                
                 {/* Column 1 */}
                 <div className="flex flex-col gap-4">
                   <div className="relative">
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 z-10">
                       <div className="relative w-full h-full">
-                        
-
                         <img
                           alt="Profile of a male designer"
                           className="w-16 h-16 rounded-full mx-auto border-4 border-background-light dark:border-background-dark"
@@ -57,8 +54,6 @@ const CreativePortfolio = () => {
                   <div className="relative">
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 z-10">
                       <div className="relative w-full h-full">
-                      
-
                         <img
                           alt="Profile of a female designer"
                           className="w-16 h-16 rounded-full mx-auto border-4 border-background-light dark:border-background-dark"
@@ -99,8 +94,6 @@ const CreativePortfolio = () => {
                   <div className="relative">
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 z-10">
                       <div className="relative w-full h-full">
-
-
                         <img
                           alt="Profile of a male designer with cap"
                           className="w-16 h-16 rounded-full mx-auto border-4 border-background-light dark:border-background-dark"
@@ -135,18 +128,19 @@ const CreativePortfolio = () => {
                     </p>
                   </div>
                 </div>
-
               </div>
             </div>
 
             {/* Right Section */}
             <div className="w-full lg:w-1/2 max-w-lg text-center lg:text-left">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-6">
                 Work with creative experts you can trust
               </h1>
               <div className="w-20 h-1.5 bg-primary mb-6 mx-auto lg:mx-0"></div>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                Feel confident working with our designer community. All our designers are vetted creative experts who’ve worked with hundreds of businesses to bring their designs to life.
+                Feel confident working with our designer community. All our
+                designers are vetted creative experts who’ve worked with
+                hundreds of businesses to bring their designs to life.
               </p>
 
               <a
