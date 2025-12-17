@@ -12,9 +12,9 @@ const AllContests = () => {
     console.log(error.message);
   }
   if (isPending) {
-    return <h1>Loading.......</h1>;
+    return <h1 className="inter text-xl md:text-4xl text-center m-23 font-bold ">Loading.......</h1>;
   }
-  console.log(data);
+  // console.log(data);
   return (
     <div className="my-8">
       <h1 className="text-3xl mb-13 md:text-5xl text-black font-bold text-center">Participate Now</h1>

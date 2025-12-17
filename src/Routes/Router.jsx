@@ -11,6 +11,8 @@ import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
 import MyCreatedContest from "../Pages/Dashboard/MyCreatedContest";
 import ParticipatedContest from "../Pages/Dashboard/ParticipatedContest";
 import EditContest from "../Pages/Dashboard/EditContest";
+import ContestDetails from "../Pages/ContestDetails";
+import PaymentSuccess from "../Pages/PaymentSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ export const router = createBrowserRouter([
         {
           path: '/register',
           Component: Register
+        },
+        {
+          path: '/contests/:id',
+          Component: ContestDetails
+        },
+        {
+          path: '/payment-success',
+          Component: PaymentSuccess
         }
     ],
   },

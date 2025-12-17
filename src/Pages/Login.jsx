@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { saveAndupdateUser } from "../utils";
 
 const Login = () => {
   const { setUser, signIn, googleSignIn } = useAuth();
@@ -13,7 +14,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const handleLogin = (data) => {
+  const handleLogin = async (data) => {
     console.log(data);
     signIn(data.email, data.password).then((result) => {
       console.log(result.user);
@@ -27,7 +28,11 @@ const Login = () => {
         timer: 1500,
       });
     });
-  
+    await saveAndupdateUser({
+      email: data.email,
+      name: data.displayName,
+      image: data.imageURL
+    })
   };
   const googleLogin = (data) => {
     googleSignIn(data.email, data.password).then(result => {

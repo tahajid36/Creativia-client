@@ -2,16 +2,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @plugin "daisyui" {
-  themes: light --default;
+  themes: dark --default;
 }
 @plugin "daisyui/theme" {
-  name: "light";
+  name: "dark";
   default: true;
   --color-primary: #CF6DFC;
   --color-secondary: #C1BFFF;
 }
 
-.inter{
+body{
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto
 }
