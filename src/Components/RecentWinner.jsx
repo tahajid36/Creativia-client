@@ -35,7 +35,7 @@ const RecentWinners = () => {
   ];
 
   return (
-    <section className="bg-[#112117] bg-[radial-gradient(circle_at_15%_50%,rgba(54,226,123,0.08),transparent_25%)] text-white min-h-screen py-16 px-4 font-sans">
+    <section className="bg-base-200 bg-[radial-gradient(at_0%_0%,rgba(59,130,246,0.1)_0,transparent_50%),radial-gradient(at_100%_0%,rgba(125,19,232,0.1)_0,transparent_50%),radial-gradient(at_50%_100%,rgba(99,102,241,0.05)_0,transparent_50%)] antialiased rounded-2xl overflow-x-hidden rounded-2xl min-h-screen py-16 px-4 font-sans">
       {/* Header Section */}
       <div className="max-w-[960px] mx-auto text-center space-y-2 mb-12">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">

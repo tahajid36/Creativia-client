@@ -10,7 +10,6 @@ const Home = () => {
             <HeroSection></HeroSection>
            
             <SortedCard></SortedCard>
-            <CreativePortfolio></CreativePortfolio>
             <RecentWinners></RecentWinners>
         </div>
     );

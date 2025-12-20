@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @plugin "daisyui" {
-  themes: dark --default;
+  themes: light --default, dark --prefersdark;
 }
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
-  --color-primary: #CF6DFC;
-  --color-secondary: #C1BFFF;
+  --color-primary: #7d13e8;
+  --color-secondary: #130f1a;
+  --color-base-300: #130f1a;
+  --color-base-200: #0B0810
 }
 
-body{
+@plugin "daisyui/theme" {
+  name: "light";
+  --color-primary: #7d13e8;
+  --color-secondary: #C1BFFF;
+  --color-base-300: #F3F4F6;
+  --color-base-200: #EEF2FF
+}
+
+body {
   font-family: "Inter", sans-serif;
-  font-optical-sizing: auto
+  font-optical-sizing: auto;
 }

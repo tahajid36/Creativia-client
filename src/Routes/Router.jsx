@@ -13,66 +13,104 @@ import ParticipatedContest from "../Pages/Dashboard/ParticipatedContest";
 import EditContest from "../Pages/Dashboard/EditContest";
 import ContestDetails from "../Pages/ContestDetails";
 import PaymentSuccess from "../Pages/PaymentSuccess";
+import ManageUsers from "../Pages/Dashboard/ManageUsers";
+import PrivateRoute from "./PrivateRoute";
+import CreatorRoute from "./CreatorRoute";
+import AdminRoute from "./AdminRoute";
+import ManageContest from "../Pages/Dashboard/ManageContest";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
     children: [
-        {
-            index: true,
-            Component: Home
-        },
-        {
-          path: '/allcontest',
-          Component: AllContests
-        },
-        {
-          path: '/aboutus',
-          Component: Aboutus
-        },
-        {
-          path: '/login',
-          Component: Login
-        },
-        {
-          path: '/register',
-          Component: Register
-        },
-        {
-          path: '/contests/:id',
-          Component: ContestDetails
-        },
-        {
-          path: '/payment-success',
-          Component: PaymentSuccess
-        }
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "/allcontest",
+        Component: AllContests,
+      },
+      {
+        path: "/aboutus",
+        Component: Aboutus,
+      },
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/contests/:id",
+        Component: ContestDetails,
+      },
+      {
+        path: "/payment-success",
+        Component: PaymentSuccess,
+      },
     ],
   },
   {
-    path: '/dashboard',
-    Component: DashboardLayout,
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
-        path: '/dashboard',
-        Component: MyProfile
+        path: "/dashboard",
+        Component: MyProfile,
       },
       {
-        path: '/dashboard/addcontest',
-        Component: AddContest
+        path: "/dashboard/participatedcontest",
+        Component: ParticipatedContest,
+      },
+      // Creator route
+      {
+        path: "/dashboard/editcontest",
+        element: (
+          <CreatorRoute>
+            <EditContest></EditContest>
+          </CreatorRoute>
+        ),
       },
       {
-        path: '/dashboard/mycreatedcontests',
-        Component: MyCreatedContest
+        path: "/dashboard/addcontest",
+        element: (
+          <CreatorRoute>
+            <AddContest></AddContest>
+          </CreatorRoute>
+        ),
+      },
+
+      {
+        path: "/dashboard/mycreatedcontests",
+        element: (
+          <CreatorRoute>
+            <MyCreatedContest> </MyCreatedContest>
+          </CreatorRoute>
+        ),
+      },
+      // this is admin route
+      {
+        path: "/dashboard/manageusers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       {
-        path: '/dashboard/participatedcontest',
-        Component: ParticipatedContest
-      },
-      {
-        path: '/dashboard/editcontest',
-        Component: EditContest
+        path: '/dashboard/managecontest',
+        element: <AdminRoute>
+          <ManageContest></ManageContest>
+        </AdminRoute>
       }
-    ]
-  }
+    ],
+  },
 ]);

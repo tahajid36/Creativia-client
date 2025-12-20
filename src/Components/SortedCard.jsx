@@ -30,7 +30,7 @@ const SortedCard = () => {
         {/* Section Header */}
         <div className="flex flex-row justify-between items-end mb-10 w-full">
           <div className="flex flex-col gap-1">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight ">
               Popular Contests
             </h2>
             <p className="text-[#95c6a9] text-sm md:text-base">
@@ -39,8 +39,8 @@ const SortedCard = () => {
           </div>
           
           <button className="hidden sm:flex group items-center justify-center gap-2 px-6 h-10 rounded-full border border-[#254632] bg-[#1a2c22] hover:border-[#36e27b] transition-all duration-300">
-            <span className="text-sm font-bold text-white group-hover:text-[#36e27b] transition-colors">Show All</span>
-            <span className="text-white group-hover:text-[#36e27b] transition-colors">→</span>
+            <Link to={'/allcontest'} className="text-sm font-bold  group-hover:text-[#36e27b] transition-colors">Show All</Link>
+            <span className=" group-hover:text-[#36e27b] transition-colors">→</span>
           </button>
         </div>
 
@@ -52,7 +52,7 @@ const SortedCard = () => {
         {/* Mobile Show All Button */}
         <div className="flex sm:hidden w-full justify-center mt-8">
           <button className="flex items-center justify-center gap-2 px-8 h-12 rounded-full border border-[#254632] bg-[#1a2c22] w-full">
-            <span className="text-base font-bold text-white">Show All Contests</span>
+            <span className="text-base font-bold ">Show All Contests</span>
           </button>
         </div>
 
