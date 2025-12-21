@@ -43,7 +43,7 @@ const ManageContest = () => {
     });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (contestId) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -52,10 +52,12 @@ const ManageContest = () => {
       confirmButtonColor: "#ef4444",
       cancelButtonColor: "#302839",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then( async(result) => {
       if (result.isConfirmed) {
+         await axiosSecure.delete(`/contests/${contestId}`)
         // Add your logic to delete the contest here
         Swal.fire("Deleted!", "Contest has been removed.", "success");
+
       }
     });
   };

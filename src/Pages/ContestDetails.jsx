@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { motion } from "framer-motion";
 import Timer from "../Components/Timer";
 import useAuth from "../Hooks/useAuth";
+import Loading from "../Components/Loading";
 
 const ContestDetails = () => {
     const {user} = useAuth()
@@ -12,12 +13,12 @@ const ContestDetails = () => {
     const {data, isLoading, isError} = useQuery({
         queryKey: ['contest', id],
         queryFn: async () => {
-          const res = await fetch(`http://localhost:5000/contests/${id}`);
+          const res = await fetch(`https://creativia-server.vercel.app/contests/${id}`);
           return res.json();
         }
       })
     //   console.log(data)
-      if (isLoading) return <p>Loading...</p>;
+      if (isLoading) return <Loading></Loading>;
       if (isError) return <p>Error loading contest!</p>;
       const {title, banner, description, participantCount, deadline, price, _id, prizeMoney} = data
 
@@ -36,7 +37,7 @@ const ContestDetails = () => {
             }
 
         }
-        const res = await fetch("http://localhost:5000/create-checkout-session", {
+        const res = await fetch("https://creativia-server.vercel.app/create-checkout-session", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

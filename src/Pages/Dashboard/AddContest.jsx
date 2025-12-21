@@ -9,7 +9,7 @@ const AddContest = () => {
 
   const {isPending, mutateAsync, reset: mutationReset} = useMutation({
     mutationFn: async payload => 
-      fetch("http://localhost:5000/contests", {
+      fetch("https://creativia-server.vercel.app/contests", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

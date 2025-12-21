@@ -18,6 +18,7 @@ import PrivateRoute from "./PrivateRoute";
 import CreatorRoute from "./CreatorRoute";
 import AdminRoute from "./AdminRoute";
 import ManageContest from "../Pages/Dashboard/ManageContest";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -64,7 +65,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        Component: MyProfile,
+        Component: DashboardHome,
+      },
+      {
+        path: "/dashboard/myprofile",
+        element: <MyProfile></MyProfile>,
       },
       {
         path: "/dashboard/participatedcontest",
@@ -106,11 +111,13 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/managecontest',
-        element: <AdminRoute>
-          <ManageContest></ManageContest>
-        </AdminRoute>
-      }
+        path: "/dashboard/managecontest",
+        element: (
+          <AdminRoute>
+            <ManageContest></ManageContest>
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);

@@ -7,7 +7,7 @@ const SortedCard = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["contestData"],
     queryFn: () =>
-      fetch("http://localhost:5000/contests").then((result) => result.json()),
+      fetch("https://creativia-server.vercel.app/contests").then((result) => result.json()),
   });
   if (error) {
     console.log(error.message);

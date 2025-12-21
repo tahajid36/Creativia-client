@@ -11,7 +11,8 @@
   --color-primary: #7d13e8;
   --color-secondary: #130f1a;
   --color-base-300: #130f1a;
-  --color-base-200: #0B0810
+  --color-base-200: #0B0810;
+  --color-base-100: #1c1c27
 }
 
 @plugin "daisyui/theme" {
@@ -19,7 +20,8 @@
   --color-primary: #7d13e8;
   --color-secondary: #C1BFFF;
   --color-base-300: #F3F4F6;
-  --color-base-200: #EEF2FF
+  --color-base-200: #EEF2FF;
+  --color-base-100: ##ffffff
 }
 
 body {

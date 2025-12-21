@@ -4,7 +4,7 @@ import axios from "axios";
 import useAuth from "./useAuth";
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://creativia-server.vercel.app',
   withCredentials: true,
 });
 

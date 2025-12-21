@@ -23,7 +23,7 @@ const Loading = () => {
         {/* Loading Text with Shimmer */}
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-xl font-bold tracking-widest text-white uppercase font-display">
-            Creative<span className="text-[#7311d4]">Contests</span>
+            Creativia<span className="text-[#7311d4]">Contests</span>
           </h2>
           <div className="w-48 h-1 bg-[#261933] rounded-full overflow-hidden relative">
             <motion.div 

@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Card from "../Components/Card";
+import Loading from "../Components/Loading";
 
 const AllContests = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["contestData"],
     queryFn: () =>
-      fetch("http://localhost:5000/contests").then((result) => result.json()),
+      fetch("https://creativia-server.vercel.app/contests").then((result) => result.json()),
   });
   if (error) {
     console.log(error.message);
   }
   if (isPending) {
-    return <h1 className="inter text-xl md:text-4xl text-center m-23 font-bold ">Loading.......</h1>;
+    return <Loading></Loading>;
   }
   // console.log(data);
   return (
