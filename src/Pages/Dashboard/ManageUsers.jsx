@@ -49,7 +49,9 @@ const ManageUsers = () => {
 
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-800">
-      <table className="min-w-full divide-y divide-slate-800">
+      <h1 className="text-4xl font-bold inter ml-15 mb-14 mt-12">Manage Users</h1>
+      <div className="w-11/12 mx-auto">
+      <table className="min-w-full divide-y  divide-slate-800">
         <thead className="bg-[#111722]">
           <tr>
             {["User", "Email", "Change Role", "Current Role"].map((head) => (
@@ -123,6 +125,7 @@ const ManageUsers = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

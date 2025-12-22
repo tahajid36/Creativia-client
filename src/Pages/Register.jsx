@@ -15,25 +15,42 @@ const Register = () => {
   } = useForm();
 
   const handleRegister = async (data) => {
-    console.log(data);
-    signup(data.email, data.password, data.photoURL, data.name).then((result) => {
-      console.log(result.user);
+    try {
+      // 1️⃣ Create Firebase user
+      const result = await signup(data.email, data.password);
+  
+      // 2️⃣ Update Firebase profile
+      await updateUserProfile(data.name, data.image);
+  
+      // 3️⃣ Save to MongoDB (AFTER Firebase is ready)
+      await saveAndupdateUser({
+        email: data.email,
+        name: data.name,
+        image: data.image,
+      });
+  
+      // 4️⃣ Update local state
       setUser(result.user);
+  
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your are registered succesfully",
+        title: "You are registered successfully",
         showConfirmButton: false,
         timer: 1500,
       });
-    });
-    updateUserProfile(data.name, data.image)
-    await saveAndupdateUser({
-      email: data.email,
-      name: data.name,
-      image: data.image,
-    });
+  
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Registration failed",
+        text: error.message,
+      });
+    }
   };
+  
   const googleLogin = async () => {
    const {user} =await googleSignIn() 
       console.log(user);

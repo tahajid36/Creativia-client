@@ -22,6 +22,14 @@ const DashboardLayout = () => {
           </div>
 
           <ul className="space-y-2">
+          <li>
+                  <Link
+                    to="/dashboard/myprofile"
+                    className="flex items-center gap-3 px-4 py-3 text-purple-100/70 hover:text-white hover:bg-white/5 rounded-xl transition"
+                  >
+                    <span className="text-sm font-semibold">Profile</span>
+                  </Link>
+                </li>
             {role === "creator" && (
               <>
                 <li>
@@ -47,14 +55,7 @@ const DashboardLayout = () => {
 
             {role === "user" && (
               <>
-                <li>
-                  <Link
-                    to="/dashboard/myprofile"
-                    className="flex items-center gap-3 px-4 py-3 text-purple-100/70 hover:text-white hover:bg-white/5 rounded-xl transition"
-                  >
-                    <span className="text-sm font-semibold">Profile</span>
-                  </Link>
-                </li>
+                
                 <li>
                   <Link
                     to="/dashboard/participatedcontest"
