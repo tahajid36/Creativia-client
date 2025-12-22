@@ -19,11 +19,14 @@ import CreatorRoute from "./CreatorRoute";
 import AdminRoute from "./AdminRoute";
 import ManageContest from "../Pages/Dashboard/ManageContest";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import Loading from "../Components/Loading";
+import Error from "../Pages/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    hydrateFallbackElement: <Loading></Loading>,
     children: [
       {
         index: true,
@@ -32,6 +35,7 @@ export const router = createBrowserRouter([
       {
         path: "/allcontest",
         Component: AllContests,
+        errorElement: <Error></Error>
       },
       {
         path: "/aboutus",
